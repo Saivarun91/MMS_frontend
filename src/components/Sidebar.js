@@ -2,27 +2,29 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, FilePlus, ClipboardList, ShieldCheck, LogIn, UserPlus, LogOut, User, Package } from "lucide-react";
+import { Home, FilePlus, ClipboardList, ShieldCheck, LogIn, UserPlus, LogOut, User, Package, Search } from "lucide-react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useAuth } from "../context/AuthContext";
 
 export default function Sidebar() {
     const pathname = usePathname();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userName, setUserName] = useState("");
     const router = useRouter();
-    useEffect(() => {
-        // Check if user is logged in (in a real app, this would come from auth context)
-        const loggedIn = localStorage.getItem("isLoggedIn") === "true";
-        setIsLoggedIn(loggedIn);
+    const { user, role, logout } = useAuth();
+    // useEffect(() => {
+    //     // Check if user is logged in (in a real app, this would come from auth context)
+    //     const loggedIn = localStorage.getItem("isLoggedIn") === "true";
+    //     setIsLoggedIn(loggedIn);
 
-        if (loggedIn) {
-            const name = localStorage.getItem("userName") || "User";
-            setUserName(name);
-        }
-    }, []);
-    const role = localStorage.getItem("role");
+    //     if (loggedIn) {
+    //         const name = localStorage.getItem("userName") || "User";
+    //         setUserName(name);
+    //     }
+    // }, []);
+    // const role = localStorage.getItem("role");
 
     const handleLogout = () => {
         localStorage.removeItem("isLoggedIn");
@@ -34,11 +36,12 @@ export default function Sidebar() {
     };
     const navItems = [
         { name: "Home", href: "/app", icon: Home },
-        { name: "Requests", href: "/requests", icon: FilePlus },
-        { name: "Indent", href: "/indent", icon: ClipboardList },
-        { name: "Materials", href: "/materials", icon: Package },
-        // ...(role === "MDGT" ? [{ name: "Governance", href: "/governance", icon: ShieldCheck }] : []),
-        ...(role === "ADMIN" ? [{ name: "Dashboard", href: "/dashboard", icon: Home }] : []),
+        { name: "Search", href: "/search", icon: Search },
+        ...(role === "Employee" || role === "MDGT" ? [{ name: "Requests", href: "/requests", icon: FilePlus }] : []),
+        // { name: "Indent", href: "/indent", icon: ClipboardList },
+        ...(role === "Employee" ? [{ name: "Materials", href: "/materials", icon: Package }] : []) ,
+        ...(role === "MDGT" ? [{ name: "Governance", href: "/governance", icon: ShieldCheck }] : []),
+        ...(role === "Admin" ? [{ name: "Admin Panel", href: "/dashboard", icon: Home }] : []),
     ];
 
 
@@ -50,18 +53,24 @@ export default function Sidebar() {
                 {/* <h1 className="text-2xl font-bold tracking-wide bg-gradient-to-r from-[#7F56D9] to-[#EC4899] bg-clip-text text-transparent">
                     MDM Portal
                 </h1> */}
-                <img src="https://meil.in/sites/default/files/meil_logo_old_update_24.png" className="bg-amber-50 w-3/4 mx-6 p-3 rounded-md" />
+                <Image
+                    src="https://meil.in/sites/default/files/meil_logo_old_update_24.png"
+                    alt="MEIL Logo"
+                    className="bg-amber-50 w-3/4 mx-6 p-3 rounded-md"
+                    width={800}
+                    height={500}
+                />
+
             </div>
 
-            {/* User Status */}
-            {isLoggedIn && (
+            {user && (
                 <div className="px-4 py-3 mt-4 mx-4 bg-white/10 rounded-lg flex items-center gap-3">
                     <div className="bg-[#7F56D9] p-2 rounded-full">
                         <User size={16} className="text-white" />
                     </div>
                     <div className="text-white text-sm">
-                        <p className="font-medium">{userName}</p>
-                        <p className="text-xs opacity-80">Welcome back!</p>
+                        <p className="font-medium">{user.emp_name || user.email}</p>
+                        <p className="text-xs opacity-80">Role: {role || "N/A"}</p>
                     </div>
                 </div>
             )}
@@ -92,10 +101,10 @@ export default function Sidebar() {
                         );
                     })}
 
-                    {isLoggedIn && (
+                    {user && (
                         <li>
                             <button
-                                onClick={handleLogout}
+                                onClick={logout}
                                 className="flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all w-full text-left text-gray-300 hover:bg-white/10 hover:text-white"
                             >
                                 <LogOut size={20} />

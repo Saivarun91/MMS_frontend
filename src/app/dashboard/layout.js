@@ -9,7 +9,8 @@ export const metadata = {
 
 export default function DashboardLayout({ children }) {
     return (
-        <Protected allowedRoles={["ADMIN"]}>
+        <Protected allowedRoles={["Admin","MDGT"
+        ]}>
 
             <div className="flex min-h-screen bg-gray-100">
                 {/* Admin Sidebar */}

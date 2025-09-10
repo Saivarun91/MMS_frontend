@@ -7,7 +7,8 @@ import {
   updateProject, 
   deleteProject 
 } from "@/lib/api";
-import {useAuth} from "@/context/AuthContext";  
+import {useAuth} from "@/context/AuthContext";
+
 
 export default function ProjectsPage() {
     const [projects, setProjects] = useState([]);
@@ -24,6 +25,7 @@ export default function ProjectsPage() {
     const [error, setError] = useState(null);
     const {user,token,role} = useAuth();
     // Load data on component mount
+    console.log("editProject",isEditing);
     useEffect(() => {
         loadProjects();
     }, []);
@@ -31,7 +33,8 @@ export default function ProjectsPage() {
     const loadProjects = async () => {
         try {
             setLoading(true);
-            // const token = localStorage.getItem("token");
+            // console.log("token",token);
+            const token = localStorage.getItem("token");
             if (!token) {
                 setError("No authentication token found");
                 return;
@@ -76,6 +79,7 @@ export default function ProjectsPage() {
 
     // ✅ Update Project
     const handleUpdate = async () => {
+        console.log("hi",editProject);
         if (!editProject.project_name) {
             setError("Project name is required");
             return;
@@ -89,7 +93,7 @@ export default function ProjectsPage() {
                 return;
             }
 
-            await updateProject(token, editProject.id, { project_name: editProject.project_name });
+            await updateProject(token, editProject.project_code, { project_name: editProject.project_name });
             await loadProjects();
             setEditProject(null);
             setIsModalOpen(false);

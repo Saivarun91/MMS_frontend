@@ -34,7 +34,7 @@ export default function CompaniesPage() {
     try {
       setLoading(true);
       setError(null);
-      const token = localStorage.getItem("token");
+      // const token = localStorage.getItem("token");
       if (!token) {
         setError("No authentication token found");
         return;
@@ -105,7 +105,7 @@ export default function CompaniesPage() {
     try {
       setSaving(true);
       setError(null);
-      const token = localStorage.getItem("token");
+      // const token = localStorage.getItem("token");
       if (!token) {
         setError("No authentication token found");
         return;
@@ -131,7 +131,7 @@ export default function CompaniesPage() {
     if (window.confirm("Are you sure you want to delete this company? This action cannot be undone.")) {
       try {
         setError(null);
-        const token = localStorage.getItem("token");
+        // const token = localStorage.getItem("token");
         if (!token) {
           setError("No authentication token found");
           return;
@@ -145,7 +145,6 @@ export default function CompaniesPage() {
       }
     }
   };
-  console.log("role",role);
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
@@ -161,7 +160,7 @@ export default function CompaniesPage() {
             </h1>
             <p className="text-gray-600 text-lg">Manage company information and organizational structure</p>
           </div>
-          {role === "Admin" && (
+          {role === "SuperAdmin" && (
             <button
               onClick={handleAddNew}
               className="flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
