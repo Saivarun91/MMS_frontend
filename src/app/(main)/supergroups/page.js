@@ -299,7 +299,7 @@ export default function SupergroupsPage() {
                 <li>Supergroups define high-level organizational categories</li>
                 <li>They help organize material groups and departments</li>
                 <li>Use the search bar to find supergroups by name, code, or description</li>
-                <li>Click the "Add Supergroup" button to create new organizational categories</li>
+                <li>Click the &quot;Add Supergroup&quot; button to create new organizational categories</li>
                 <li>Use the edit and delete icons to modify or remove supergroups</li>
               </ul>
             </div>
