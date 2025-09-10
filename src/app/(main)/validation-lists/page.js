@@ -307,8 +307,8 @@ export default function ValidationListsPage() {
                 <li>Validation lists define allowed values for various system fields</li>
                 <li>They ensure data consistency and compliance across the system</li>
                 <li>Use the search bar to find lists by name, type, or values</li>
-                <li>Click the "Add List" button to create new validation lists</li>
-                <li>Values should be comma-separated (e.g., "Active,Inactive,Pending")</li>
+                <li>Click the &quot;Add List&quot; button to create new validation lists</li>
+                <li>Values should be comma-separated (e.g., &quot;Active,Inactive,Pending&quot;)</li>
                 <li>Use the edit and delete icons to modify or remove lists</li>
               </ul>
             </div>
@@ -358,7 +358,7 @@ export default function ValidationListsPage() {
                   className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Active,Inactive,Pending,Discontinued"
                 />
-                <p className="text-xs text-gray-500 mt-1">Enter comma-separated values (e.g., "Active,Inactive,Pending")</p>
+                <p className="text-xs text-gray-500 mt-1">Enter comma-separated values (e.g., &quot;Active,Inactive,Pending&quot;)</p>
               </div>
             </div>
 
