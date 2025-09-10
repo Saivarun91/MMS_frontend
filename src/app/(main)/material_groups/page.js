@@ -302,7 +302,7 @@ export default function MaterialGroupsPage() {
               <ul className="list-disc list-inside text-blue-700 space-y-1">
                 <li>Groups help organize materials into logical categories</li>
                 <li>Use the search bar to find groups by name, code, or description</li>
-                <li>Click the "Add Group" button to create new material categories</li>
+                <li>Click the &quot;Add Group&quot; button to create new material categories</li>
                 <li>Use the edit and delete icons to modify or remove groups</li>
                 <li>Deleting a group will not delete the materials in that group</li>
               </ul>
