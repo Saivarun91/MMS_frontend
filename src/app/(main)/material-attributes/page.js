@@ -292,7 +292,7 @@ export default function MaterialAttributesPage() {
                 <li>Print priority determines the order of attributes in printed material names</li>
                 <li>Validation rules ensure data consistency and compliance</li>
                 <li>Use the search bar to find attributes by name, print name, or material group</li>
-                <li>Click the "Add Attribute" button to create new material attributes</li>
+                <li>Click the &quot;Add Attribute&quot; button to create new material attributes</li>
                 <li>Use the edit and delete icons to modify or remove attributes</li>
               </ul>
             </div>
