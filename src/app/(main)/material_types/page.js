@@ -275,7 +275,7 @@ export default function MaterialTypesPage() {
               <ul className="list-disc list-inside text-blue-700 space-y-1">
                 <li>Types help classify materials based on their stage in the production process</li>
                 <li>Use the search bar to find types by name, code, or description</li>
-                <li>Click the "Add Type" button to create new material classifications</li>
+                <li>Click the &quot;Add Type&quot; button to create new material classifications</li>
                 <li>Use the edit and delete icons to modify or remove types</li>
                 <li>Deleting a type will not delete the materials of that type</li>
               </ul>
