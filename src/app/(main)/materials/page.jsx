@@ -249,7 +249,7 @@ export default function MaterialsPage() {
                   {filteredMaterials.length > 0 ? (
                     filteredMaterials.map((material) => (
                       <tr key={material.local_item_id} className="hover:bg-gray-50">
-                        <td className="font-default px-6 py-4 text-sm font-medium text-gray-900">{material.sap_item_id || '-'}</td>
+                        <td className="px-6 py-4 text-sm font-medium text-gray-900">{material.sap_item_id || '-'}</td>
                         <td className="px-6 py-4 text-sm text-gray-900">{material.mat_type_code || '-'}</td>
                         <td className="px-6 py-4 text-sm text-gray-900">{material.mgrp_code || '-'}</td>
                         <td className="px-6 py-4 text-sm text-gray-900">{material.item_desc || '-'}</td>
