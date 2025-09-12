@@ -24,7 +24,7 @@ export default function RequestsPage() {
     const [saving, setSaving] = useState(false);
     const [error, setError] = useState(null);
     const [formData, setFormData] = useState({
-        project_id: "",
+        project_code: "",
         notes: "",
     });
     const [chatData, setChatData] = useState({
@@ -65,6 +65,7 @@ export default function RequestsPage() {
             setLoading(false);
         }
     };
+    console.log("formdata : ", formData)
 
     // Filter requests
     const filteredRequests = requests.filter(request => {
@@ -82,7 +83,7 @@ export default function RequestsPage() {
     const handleAddNew = () => {
         setEditingRequest(null);
         setFormData({
-            project_id: "",
+            project_code: "",
             notes: "",
         });
         setIsModalOpen(true);
@@ -467,13 +468,13 @@ export default function RequestsPage() {
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Project Code *</label>
                                 <input
                                     type="text"
-                                    name="project_id"
+                                    name="project_code"   // ✅ correct
                                     value={formData.project_code}
                                     onChange={handleInputChange}
                                     className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                    placeholder="Enter Project code"
-                                
+                                    placeholder="Enter Project Code"
                                 />
+
                             </div>
 
                             <div>
